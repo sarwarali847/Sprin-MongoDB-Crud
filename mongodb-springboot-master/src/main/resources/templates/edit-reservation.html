@@ -1,0 +1,80 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="navbar navbar-light" style="background-color: Aquamarine;height: 83px; align-items: center; border-radius: 30px;size: 20px;padding: 16px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" th:href="@{/reservations-ui}">E-sharam Registration</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a th:href="@{/reservations-ui}">Home</a></li>
+        <li><a th:href="@{/reservation/new}">Add Customer</a></li>
+        <li><a th:href="@{/reservations-ui}">View Customer</a></li>
+        <li><a th:href="@{/searchcustomer}">Search Customer</a></li>
+        <li><a th:href="@{/reservations-ui}">Logout</a></li>
+      
+        <li><div class="side-box" style="position: absolute;left:50px;top:15px">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search">
+             
+                    </div></li>
+       </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<body style=' background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff)'>
+<div class="container">
+    
+<form th:action="@{/reservation-edit/{id}(id=${id})}" th:object = "${reservation}" method='post' style='width:300px'> 
+
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input th:field="*{firstName}" type="text" class="form-control" id="firstName">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></label>
+        </div>
+        
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input th:field="*{lastName}" type="text" class="form-control" id="lastName">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('lastName')}" th:errors="*{firstName}"></label>
+        </div>
+        
+        <div class="form-group">
+            <label for="emailId">Email Id:</label>
+            <input th:field="*{emailId}" type="email" class="form-control" id="emailId">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('emailId')}" th:errors="*{emailId}"></label>
+        </div>
+        
+        <div class="form-group">
+            <label for="mobileNumber">Mobile:</label>
+            <input th:field="*{mobileNumber}" type="number" class="form-control" id="mobileNumber">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('mobileNumber')}" th:errors="*{mobileNumber}"></label>
+        </div>
+        
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input th:field="*{date}" type="datetime" class="form-control" id="date">
+            <label th:style="'color:red'" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></label>
+        </div>
+        <a th:href="@{/reservations-ui}">
+            <button type="button" class="btn btn-danger">Cancel</button>
+        </a>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-success">Reset</button>
+    </form>
+</div>
+</body>
+</html>

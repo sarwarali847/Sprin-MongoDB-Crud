@@ -1,0 +1,93 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<nav class="navbar navbar-light" style="background-color: Aquamarine;height: 83px; align-items: center; border-radius: 30px;size: 20px;padding: 16px">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" th:href="@{/reservations-ui}">E-sharam Registration</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a th:href="@{/reservations-ui}">Home</a></li>
+        <li><a th:href="@{/reservation/new}">Add Customer</a></li>
+        <li><a th:href="@{/reservations-ui}">View Customer</a></li>
+        <li><a th:href="@{/searchcustomer}">Search Customer</a></li>
+        <li><a th:href="@{/reservations-ui}">Logout</a></li>
+      
+        <li><div class="side-box" style="position: absolute;left:50px;top:15px">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search">
+             
+                    </div></li>
+       </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<body style=' background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff)'>
+   
+        
+    <form th:action="@{/searchcustomer}">
+		<input type="text" name="search" id="search" placeholder="Search customer.." size="100" style="margin-left: 140px" th:value="${search}"/>
+		<input type="submit" value="search" />
+		<input type="reset" value="Clear" />
+	</form>
+
+
+		
+		<div class='container'>
+
+		<table class='table table-bordered table-striped' style='background-color:#90EE90'>
+	   <tr>
+	   <th>First Name</th>
+	   <th>Last Name</th>
+	   <th>Email Id</th>
+	   <th>Mobile</th>
+	   <th>Date</th>
+	   <th>Edit</th>
+	   <th>Delete</th>
+	   </tr>
+	
+		<tr th:each = "c: ${listCustomer}">
+		<td th:text = "${c.firstName}">first name</td>
+		<td th:text = "${c.lastName}">last name</td>
+		<td th:text = "${c.emailId}">email id</td>
+		<td th:text = "${c.mobileNumber}">mobile number</td>
+		<td th:text = "${c.date}">date</td>
+
+		
+		
+		<td>
+			 <a th:href="@{/edit-add-reservation/{id}(id=${c.id})}">
+                            <button type="button" class="btn btn-primary">Edit</button>
+                        </a>
+		<td>
+			 <a th:href="@{/delete-reservation/{id}(id=${c.id})}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+		</td>
+		
+		
+		</tr>
+		</table>
+		</div>
+		</body>
+		
+		<div 
+		th:replace="footer.html">
+</div>
+
+
+
+</html>
