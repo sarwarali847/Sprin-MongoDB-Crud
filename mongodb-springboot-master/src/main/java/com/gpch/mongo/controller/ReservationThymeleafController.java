@@ -30,7 +30,7 @@ public class ReservationThymeleafController {
 	
 	@Autowired
 	private com.gpch.mongo.service.SequenceGeneratorService sequenceGeneratedService;
-
+	
     @Autowired
     public ReservationThymeleafController(ReservationService reservationService) {
         this.reservationService = reservationService;
@@ -42,7 +42,9 @@ public class ReservationThymeleafController {
         model.addAttribute("reservations", reservationService.getAllReservations());
         return "reservations";
     }
-
+    
+    
+   
     @GetMapping("/delete-reservation/{id}")
     public String removeReservation(@PathVariable("id") Long id, Model model) {
     	log.info("DELETE : /reservation/{ "+id+" } --> called");
@@ -52,7 +54,7 @@ public class ReservationThymeleafController {
     }
     
     @GetMapping("/edit-add-reservation/{id}")
-	public String editCarForm(@PathVariable Long id, Model model) {
+	public String editReservationForm(@PathVariable Long id, Model model) {
 		
 		model.addAttribute("reservation",reservationService.findReservationById(id));
 		

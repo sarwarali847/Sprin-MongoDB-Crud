@@ -33,9 +33,7 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public void deleteAllReservations(){
-        reservationRepository.deleteAll();
-    }
+   
 
     public void deleteReservationById(Long id){
         reservationRepository.deleteById(id);
@@ -43,7 +41,7 @@ public class ReservationService {
 
     public Optional<Reservation> findReservationById(Long id){
         return reservationRepository.findById(id);
-    }
+    } 
 
 	public Iterable<Reservation> searchCustomer(String search) {
 		if(!(search==null))
@@ -55,7 +53,7 @@ public class ReservationService {
                                 Criteria.where("mobileNumber").regex(search, "i"))
                     ), Reservation.class);
 			}
-			
+		
 
 		return reservationRepository.findAll();
 		
