@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link th:href="@{css/style.css}" rel="stylesheet">
 </head>
 <nav class="navbar navbar-light" style="background-color: Aquamarine;height: 83px; align-items: center; border-radius: 30px;size: 20px;padding: 16px">
   <div class="container">
@@ -49,7 +50,8 @@
                     <th>Email Id</th>
                     <th>Mobile</th>
                     <th>Date</th>
-                    <th colspan="2">Actions</th>
+                    <th>Edit</th>
+	                <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,15 +67,18 @@
                     <td><span th:text="${reservation.emailId}"> Name </span></td>
                     <td><span th:text="${reservation.mobileNumber}"> Name </span></td>
                     <td><span th:text="${#temporals.format(reservation.date, 'dd-MM-yyyy HH:mm')}"> Date </span></td>
-                    <td>
-                        <a th:href="@{/delete-reservation/{id}(id=${reservation.id})}">
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </a>
+                     <td>
                         <a th:href="@{/edit-add-reservation/{id}(id=${reservation.id})}">
                             <button type="button" class="btn btn-primary">Edit</button>
                         </a>
 
                     </td>
+                    <td>
+                        <a th:href="@{/delete-reservation/{id}(id=${reservation.id})}">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                       </td>
+                      
                 </tr>
                 </tbody>
             </table>

@@ -28,6 +28,10 @@ public class ReservationService {
     public Reservation saveReservation(Reservation reservation){
         return reservationRepository.save(reservation);
     }
+    
+    public Reservation updateReservation(Reservation reservation) {
+    	return reservationRepository.save(reservation);
+    }
 
     public Iterable<Reservation> getAllReservations(){
         return reservationRepository.findAll();

@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link th:href="@{css/style.css}" rel="stylesheet">
 </head>
 <nav class="navbar navbar-light" style="background-color: Aquamarine;height: 83px; align-items: center; border-radius: 30px;size: 20px;padding: 16px">
   <div class="container">
@@ -39,9 +40,9 @@
    
         
     <form th:action="@{/searchcustomer}">
-		<input type="text" name="search" id="search" placeholder="Search customer.." size="100" style="margin-left: 140px" th:value="${search}"/>
-		<input type="submit" value="search" />
-		<input type="reset" value="Clear" />
+		<input type="text" name="search" id="search" placeholder="Search customer.." size="90"  style="margin-left: 140px" th:value="${search}"/>
+		<input type="submit" class="btn btn-primary" value="search" />
+		<input type="reset" class="btn btn-danger" value="Clear" />
 	</form>
 
 

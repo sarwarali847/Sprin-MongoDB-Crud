@@ -64,3 +64,7 @@ ul, ol {
     visibility: hidden;
     transition: .22s ease;
 }
+
+th,tr{
+	text-align: center;
+}
